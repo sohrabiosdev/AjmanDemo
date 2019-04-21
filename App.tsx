@@ -7,7 +7,9 @@
  */
 
 import React, {Component} from "react";
-import {Platform, StyleSheet, Text, View} from "react-native";
+import {Platform, StyleSheet} from "react-native";
+import RootNavigator from "./src/navigation/RootNavigator";
+import NavigationService from "./src/navigation/NavigationService";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -19,13 +21,13 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+      return (<RootNavigator
+          ref={(r) => {
+              NavigationService.setTopLevelNavigator(r);
+          }}
+          onNavigationStateChange={(prevState, currentState) => {
+          }}
+      />);
   }
 }
 

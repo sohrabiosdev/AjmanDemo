@@ -1,5 +1,6 @@
 import {Animated, Easing} from "react-native";
 import {createAppContainer, createStackNavigator} from "react-navigation";
+import LoginScreens from "./LoginScreens";
 
 const TransitionConfiguration = () => {
     return {
@@ -25,7 +26,10 @@ const TransitionConfiguration = () => {
     };
 };
 
-const RootNavigator = createStackNavigator({},
-    {});
+const RootNavigator = createStackNavigator({LoginScreens: LoginScreens},
+    {
+        headerMode: "none",
+        transitionConfig: TransitionConfiguration,
+    });
 
 export default createAppContainer(RootNavigator);
